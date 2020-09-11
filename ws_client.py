@@ -19,7 +19,9 @@ from sp_iotsim.client import main
 
 
 if __name__ == "__main__":
+    #Set arguments containter
     p = argparse.ArgumentParser(description="WebSocket client")
+    #Define arguments
     p.add_argument("-l", "--log", help="file to log JSON data")
     p.add_argument("-host", help="Host address", default="localhost")
     p.add_argument("-port", help="network port", type=int, default=8765)
@@ -29,9 +31,13 @@ if __name__ == "__main__":
         type=int,
         default=100000,
     )
+    #Parse for arguments
     P = p.parse_args()
 
+    #Recieving from ws_server.py
     try:
         asyncio.run(main(P.port, P.host, P.max_packets, P.log))
     except KeyboardInterrupt:
         print(P.log)
+        #print("mike")
+        
