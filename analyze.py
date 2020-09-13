@@ -53,8 +53,8 @@ if __name__ == "__main__":
 
     data = load_data(file)
 
-    rooms = ["office"]#, "lab1", "class1"]
-    measurements = ["temperature"]#, "occupancy", "co2"]
+    rooms = ["office", "lab1", "class1"]
+    measurements = ["temperature", "occupancy", "co2"]
 
     #Printing median and variance observed from temp and occupancy data
     print("Median and Variance:")
@@ -78,32 +78,26 @@ if __name__ == "__main__":
         df.plot.kde(title=Title)
     print("\n")
 
-    #Mean & variance of time interval data
+    #Mean, variance, and pdf of time interval data
     print("Time-Interval Mean and Variance:")
     for measurement in measurements:
         df = data[measurement]
+        time_dict = {}
         for room in rooms:
             stack = df[room]
             stack_data = stack.dropna()
-            time_diff = {}
+            time_diff = [0] * stack_data.size
             for x in range (0, stack_data.size):
                 if x != 0:
                     time_diff[x - 1] = float(stack_data.index[x].timestamp() - stack_data.index[x - 1].timestamp())
+            time_dict[room] = time_diff
             mean = statistics.mean(time_diff)
             variance = statistics.variance(time_diff)
             print("The Mean Time Difference of " + str(measurement) + " Measurements in " + str(room) + " is " + str(mean))
             print("The Variance of Time Difference in " + str(measurement) + " Measurements in " + str(room) + " is " + str(variance))
-    
-    #plot probability dist function for time interval data
-    
-
-    
-    #for k in data:
-        # data[k].plot()
-        #time = data[k].index
-        #data[k].hist()
-        #plt.figure()
-        #plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
-        #plt.xlabel("Time (seconds)")
-
+        pd_dict = dict( office = np.array(time_dict["office"]), lab1 = np.array(time_dict["lab1"]), class1 = np.array(time_dict["class1"]))
+        df2 = pandas.DataFrame(dict([ (k,pandas.Series(v)) for k, v in pd_dict.items() ]))
+        Title="Probability Distribution Function of Time Difference in " + str(measurement) + " Measurements"
+        df2.plot.kde(title=Title)
+            
     plt.show()
