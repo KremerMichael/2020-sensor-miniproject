@@ -20,8 +20,13 @@ async def main(port: int, addr: str, max_packets: int, log_file: Path):
         where to store the data received (student must add code for this)
     """
 
+    #Dealing with logging to a txt file
     if log_file:
         log_file = Path(log_file).expanduser()
+        print("Writing to " + str(log_file))
+        file = log_file.open(mode='a')
+    else:
+        log_file = None
 
     uri = f"ws://{addr}:{port}"
 
@@ -38,3 +43,8 @@ async def main(port: int, addr: str, max_packets: int, log_file: Path):
                 pass
                 # print(f"{i} total messages received")
             print(data)
+            if log_file != None:
+                file.write(data)
+                file.write('\n')
+
+    file.close()

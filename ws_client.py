@@ -14,8 +14,15 @@ Naturally, the server ws_server.py must be started before this client attempts t
 
 import argparse
 import asyncio
+from aiofile import AIOFile 
 
 from sp_iotsim.client import main
+
+#async def main(file):
+#    async with AIOFile(file, 'w+') as afp:
+#        await afp.wr
+
+
 
 
 if __name__ == "__main__":
