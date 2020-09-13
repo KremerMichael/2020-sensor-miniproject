@@ -16,7 +16,8 @@ from datetime import datetime
 import typing as T
 import matplotlib.pyplot as plt
 import numpy as np
-
+import statistics
+import math
 
 def load_data(file: Path) -> T.Dict[str, pandas.DataFrame]:
 
@@ -52,12 +53,57 @@ if __name__ == "__main__":
 
     data = load_data(file)
 
-    for k in data:
+    rooms = ["office"]#, "lab1", "class1"]
+    measurements = ["temperature"]#, "occupancy", "co2"]
+
+    #Printing median and variance observed from temp and occupancy data
+    print("Median and Variance:")
+    for measurement in measurements:
+        df = data[measurement]
+        for room in rooms:
+            stack = df[room]
+            stack_data = stack.dropna() 
+            median = statistics.median(stack_data)
+            variance = statistics.variance(stack_data)
+            if measurement != "co2":
+                print("The Median " + str(room) + " " + str(measurement) + " is " + str(median))
+                print("The Variance of " + str(measurement) + " in " + str(room) + " is " + str(variance))
+    print("\n")
+              
+    #plot probability dist function for each sensor
+    print("Printing Probability Distributions:")
+    for measurement in measurements:
+        df = pandas.DataFrame(data[measurement])
+        Title="Probability Distribution Function of " + str(measurement)
+        df.plot.kde(title=Title)
+    print("\n")
+
+    #Mean & variance of time interval data
+    print("Time-Interval Mean and Variance:")
+    for measurement in measurements:
+        df = data[measurement]
+        for room in rooms:
+            stack = df[room]
+            stack_data = stack.dropna()
+            time_diff = {}
+            for x in range (0, stack_data.size):
+                if x != 0:
+                    time_diff[x - 1] = float(stack_data.index[x].timestamp() - stack_data.index[x - 1].timestamp())
+            mean = statistics.mean(time_diff)
+            variance = statistics.variance(time_diff)
+            print("The Mean Time Difference of " + str(measurement) + " Measurements in " + str(room) + " is " + str(mean))
+            print("The Variance of Time Difference in " + str(measurement) + " Measurements in " + str(room) + " is " + str(variance))
+    
+    #plot probability dist function for time interval data
+    
+
+    
+    #for k in data:
         # data[k].plot()
-        time = data[k].index
-        data[k].hist()
-        plt.figure()
-        plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
-        plt.xlabel("Time (seconds)")
+        #time = data[k].index
+        #data[k].hist()
+        #plt.figure()
+        #plt.hist(np.diff(time.values).astype(np.int64) // 1000000000)
+        #plt.xlabel("Time (seconds)")
 
     plt.show()
