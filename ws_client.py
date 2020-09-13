@@ -45,6 +45,5 @@ if __name__ == "__main__":
     try:
         asyncio.run(main(P.port, P.host, P.max_packets, P.log))
     except KeyboardInterrupt:
-        print(P.log)
-        #print("mike")
+        print("Terminating Client")
         
