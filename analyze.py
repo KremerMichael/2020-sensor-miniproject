@@ -1,13 +1,4 @@
 #!/usr/bin/env python3
-"""
-This example assumes the JSON data is saved one line per timestamp (message from server).
-
-It shows how to read and process a text file line-by-line in Python, converting JSON fragments
-to per-sensor dictionaries indexed by time.
-These dictionaries are immediately put into Pandas DataFrames for easier processing.
-
-Feel free to save your data in a better format--I was just showing what one might do quickly.
-"""
 import pandas
 from pathlib import Path
 import argparse
@@ -86,7 +77,7 @@ if __name__ == "__main__":
         for room in rooms:
             stack = df[room]
             stack_data = stack.dropna()
-            time_diff = [0] * stack_data.size
+            time_diff = [0] * (stack_data.size - 1)
             for x in range (0, stack_data.size):
                 if x != 0:
                     time_diff[x - 1] = float(stack_data.index[x].timestamp() - stack_data.index[x - 1].timestamp())

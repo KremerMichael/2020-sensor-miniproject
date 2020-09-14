@@ -12,8 +12,6 @@ import statistics
 
 def load_data(file: path) -> T.Dict[str, pandas.Dataframe]:
     temperature = {}
-    occupancy = {}
-    co2 = {}
 
     with open(file, "r") as f:
         for line in f:
@@ -21,13 +19,8 @@ def load_data(file: path) -> T.Dict[str, pandas.Dataframe]:
             room = list(r.keys())[0]
             time = datetime.fromisoformat(r[room]["time"])
             temerature[time] = {room: r[room]["temperature"][0]}
-            occupancy[time] = {room: r[room]["occupancy"][0]}
-            co2[time] = {room: r[room]["co2"][0]}
 
-    data = {"temperature": pandas.DataFrame.from_dict(temperature, "index").sort_index(),
-            "occupancy": pandas.DataFrame.from_dict(occupancy, "index").sort_index(),
-            "co2": pandas.DataFrame.from_dict(co2, "index").sort_index(),}
-
+    data = {"temperature": pandas.DataFrame.from_dict(temperature, "index").sort_index(),}
     return data
 
 if __name__ == "__main__":
@@ -36,4 +29,14 @@ if __name__ == "__main__":
     P = p.parse_args()
 
     file = Path(P.file).expanduser()
+
     data = load_data(file)
+
+    office_temp = data["temperature"]["office"].dropna()
+    lab1_temp = data["temperature"]["lab1"].dropna()
+    class1_temp = data["temperature"]["class1"].dropna()
+
+    #Get mean
+    office_mean = statistics.mean(office_temp)
+    lab1_mean = statistics.mean(lab1_temp)
+    class1_mean = statistics.mean(class1_temp)
