@@ -1,4 +1,7 @@
 Michael Kremer
+U45121665
+END EC463 A1
+
 2020 Sensor Mini-Project Report
 
 Task 0: Set up Python Websockets
