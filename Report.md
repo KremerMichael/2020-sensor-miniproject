@@ -46,7 +46,7 @@ Below is a table with values calculated from the time-interval inbetween measurm
 
 Please note that these values have been hardcoded into this table with my collected data. If new data is used, this table will be out of date.
 
-![Image of t](https://github.com/KremerMichael/2020-sensor-miniproject/blob/main/graphs/PDist_c02.png)
+![Image of t](https://github.com/KremerMichael/2020-sensor-miniproject/blob/main/graphs/PDist_co2.png)
 
 
 ## Task 3: Design
