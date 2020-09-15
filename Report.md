@@ -24,7 +24,7 @@ After logging the data from ws_client.py into data.txt, the data can be analyzed
 ```sh
 $ python analyze.py data.txt
 ```
-
+This python script will calculate and print the Median and Variance of measured temperature, occupancy and CO2 values.
 Below is a table with values calculated from recorded temperature and occupancy data
 |                      | Office | Lab1 | Class1 |
 |----------------------|-------:|-----:|-------:|
@@ -33,7 +33,7 @@ Below is a table with values calculated from recorded temperature and occupancy 
 | Median Occupancy     |    2.0 |  5.0 |   19.0 |
 | Occupancy Variance   |   1.94 | 5.28 |  19.89 |
 
-
+This Script also calculates and prints the Mean and Variance of time between measurements of temperature, occupancy, and CO2 in each room.
 Below is a table with values calculated from the time-interval inbetween measurments
 | Time inteval         | Office | Lab1 | Class1 |
 |----------------------|-------:|-----:|-------:|
@@ -46,7 +46,7 @@ Below is a table with values calculated from the time-interval inbetween measurm
 
 Please note that these values have been hardcoded into this table with my collected data. If new data is used, this table will be out of date.
 
-
+![Image of t](https://github.com/KremerMichael/2020-sensor-miniproject/blob/main/graphs/PDist_c02.png)
 
 
 ## Task 3: Design
