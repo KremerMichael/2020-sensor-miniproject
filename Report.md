@@ -14,6 +14,19 @@ $ ECE Senior Capstone IoT simulator
 ## Task 2: Analysis
     Make a table here
 
+|                        | Office | Lab1 | Class1 |
+|------------------------|-------:|-----:|-------:|
+| Median Temperature     | xx     |  xx  |   x    |
+| Temperature Variance   |  xx    |  ss  |  dssd  |
+| Median Occupancy       | ddd    |  sd  |  sdds  |
+| Occupancy Variance     | ds     |  sd  |  sdd   |
+| Mean Time Interval     | ds     |  sd  | ds     |
+| Time Interval Variance |   sd   |  sd  |   sd   |
+
+
+
+
+
 ## Task 3: Design
 
 ## Task 4: Conclusions
