@@ -57,8 +57,8 @@ if __name__ == "__main__":
             median = statistics.median(stack_data)
             variance = statistics.variance(stack_data)
             if measurement != "co2":
-                print("The Median " + str(room) + " " + str(measurement) + " is " + str(median))
-                print("The Variance of " + str(measurement) + " in " + str(room) + " is " + str(variance))
+                print("The Median " + str(room) + " " + str(measurement) + " is " + str(round(median, 2)))
+                print("The Variance of " + str(measurement) + " in " + str(room) + " is " + str(round(variance, 2)))
     print("\n")
               
     #plot probability dist function for each sensor
@@ -84,8 +84,8 @@ if __name__ == "__main__":
             time_dict[room] = time_diff
             mean = statistics.mean(time_diff)
             variance = statistics.variance(time_diff)
-            print("The Mean Time Difference of " + str(measurement) + " Measurements in " + str(room) + " is " + str(mean))
-            print("The Variance of Time Difference in " + str(measurement) + " Measurements in " + str(room) + " is " + str(variance))
+            print("The Mean Time Difference of " + str(measurement) + " Measurements in " + str(room) + " is " + str(round(mean, 2)))
+            print("The Variance of Time Difference in " + str(measurement) + " Measurements in " + str(room) + " is " + str(round(variance, 2)))
         pd_dict = dict( office = np.array(time_dict["office"]), lab1 = np.array(time_dict["lab1"]), class1 = np.array(time_dict["class1"]))
         df2 = pandas.DataFrame(dict([ (k,pandas.Series(v)) for k, v in pd_dict.items() ]))
         Title="Probability Distribution Function of Time Difference in " + str(measurement) + " Measurements"
