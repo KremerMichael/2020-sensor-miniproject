@@ -1,4 +1,5 @@
-# Sensor simulation miniproject
+ Sensor simulation miniproject
+ 
 
 ![Actions Status](https://github.com/BostonUniversitySeniorDesign/2020-sensor-miniproject/workflows/ci/badge.svg)
 
