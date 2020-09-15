@@ -43,6 +43,7 @@ Below is a table with values calculated from the time-interval inbetween measurm
 | Occupancy Variance   |   7.43 | 9.33 |   8.41 |
 | CO2 Mean             |   2.89 | 2.87 |   2.99 |
 | CO2 Variance         |   7.43 | 9.33 |   8.41 |
+
 Please note that these values have been hardcoded into this table with my collected data. If new data is used, this table will be out of date.
 
 
