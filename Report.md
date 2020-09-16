@@ -26,7 +26,8 @@ $ python analyze.py data.txt
 ```
 
 Please note that all of the data in the tables and graphs below is from the data.txt associated with this
-6372537ed613fa56e83726780b3addd828012b5c commit. If any changes are made to data.txt the following values should be close but will not be exact matches
+[this]https://github.com/KremerMichael/2020-sensor-miniproject/blob/6372537ed613fa56e83726780b3addd828012b5c/Report.md
+commit. If any changes are made to data.txt the following values should be close but will not be exact matches
 
 ### 1) Median and Variance of Temperature
 
